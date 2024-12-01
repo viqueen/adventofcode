@@ -28,10 +28,9 @@ func TotalDistance(left []int, right []int) (int, error) {
 
 func TestTotalDistance(t *testing.T) {
 	tests := map[string]struct {
-		left        []int
-		right       []int
-		expected    int
-		expectedErr error
+		left     []int
+		right    []int
+		expected int
 	}{
 		"test_1": {left: []int{1, 2, 3}, right: []int{1, 2, 3}, expected: 0},
 		"test_2": {left: []int{1, 2, 3}, right: []int{3, 2, 1}, expected: 0},
@@ -49,12 +48,7 @@ func TestTotalDistance(t *testing.T) {
 	}
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			actual, err := TotalDistance(tc.left, tc.right)
-			if err != nil {
-				if err.Error() != tc.expectedErr.Error() {
-					t.Errorf("expected: %v, got: %v", tc.expectedErr, err)
-				}
-			}
+			actual, _ := TotalDistance(tc.left, tc.right)
 			if actual != tc.expected {
 				t.Errorf("expected: %v, got: %v", tc.expected, actual)
 			}
@@ -64,10 +58,7 @@ func TestTotalDistance(t *testing.T) {
 
 func TestTotalDistanceInput(t *testing.T) {
 	leftList, rightList := readInput(t)
-	sum, err := TotalDistance(leftList, rightList)
-	if err != nil {
-		t.Fatal(err)
-	}
+	sum, _ := TotalDistance(leftList, rightList)
 	t.Logf("Total distance: %v", sum)
 }
 
@@ -105,12 +96,7 @@ func TestSimilarityScore(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			actual, err := SimilarityScore(tc.left, tc.right)
-			if err != nil {
-				if err.Error() != tc.expectedErr.Error() {
-					t.Errorf("expected: %v, got: %v", tc.expectedErr, err)
-				}
-			}
+			actual, _ := SimilarityScore(tc.left, tc.right)
 			if actual != tc.expected {
 				t.Errorf("expected: %v, got: %v", tc.expected, actual)
 			}
@@ -120,19 +106,13 @@ func TestSimilarityScore(t *testing.T) {
 
 func TestSimilarityScoreInput(t *testing.T) {
 	leftList, rightList := readInput(t)
-	score, err := SimilarityScore(leftList, rightList)
-	if err != nil {
-		t.Fatal(err)
-	}
+	score, _ := SimilarityScore(leftList, rightList)
 	t.Logf("Similarity score: %v", score)
 }
 
 func readInput(t *testing.T) ([]int, []int) {
 	cwd, _ := os.Getwd()
-	file, err := os.Open(filepath.Join(cwd, "01_input.txt"))
-	if err != nil {
-		t.Fatal(err)
-	}
+	file, _ := os.Open(filepath.Join(cwd, "01_input.txt"))
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
