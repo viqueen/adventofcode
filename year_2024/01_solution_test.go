@@ -57,7 +57,7 @@ func TestTotalDistance(t *testing.T) {
 }
 
 func TestTotalDistanceInput(t *testing.T) {
-	leftList, rightList := readInput(t)
+	leftList, rightList := readDayOneInput()
 	sum, _ := TotalDistance(leftList, rightList)
 	t.Logf("Total distance: %v", sum)
 }
@@ -105,12 +105,12 @@ func TestSimilarityScore(t *testing.T) {
 }
 
 func TestSimilarityScoreInput(t *testing.T) {
-	leftList, rightList := readInput(t)
+	leftList, rightList := readDayOneInput()
 	score, _ := SimilarityScore(leftList, rightList)
 	t.Logf("Similarity score: %v", score)
 }
 
-func readInput(t *testing.T) ([]int, []int) {
+func readDayOneInput() ([]int, []int) {
 	cwd, _ := os.Getwd()
 	file, _ := os.Open(filepath.Join(cwd, "01_input.txt"))
 	defer file.Close()
